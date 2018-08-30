@@ -130,11 +130,23 @@
 
 <body class="home blog">
 @section('header')
+    <div class="container">
+        <div class="row">
+            @if (Route::has('login'))
+                <div class="top-right links">
+                    @auth
+                        <a href="{{ url('/home') }}">Home</a>
+                    @else
+                        <a href="{{ route('login') }}">Login</a>
+                        <a href="{{ route('register') }}">Register</a>
+                    @endauth
+                </div>
+            @endif
+        </div>
+    </div>
     <header id="masthead" class="site-header" role="banner">
         <div class="clearfix container">
             <div class="site-branding">
-
-
                 <a href="/" title="Blog" rel="home"><img
                             src="{{asset('http://sonqobamaseko.com/wp-content/uploads/2013/08/welcome_to_my_blog.png')}}"
                             width="200px"></a>
@@ -142,7 +154,6 @@
 
                 <div class="site-description">Welcome</div>
             </div>
-
             <div class="header_ad_468"><a
                         href="http://www.elegantthemes.com/affiliates/idevaffiliate.php?id=26182_6_1_24"
                         target="_blank"><img style="border:0px"
@@ -264,8 +275,8 @@
                             <!-- .entry-meta --></footer>
                         <!-- #post-19--></article>
 
-                @show
-                <!-- #content --></div>
+            @show
+            <!-- #content --></div>
             <!-- #primary --></div>
 
         <div id="widget-area-2" class="site-sidebar widget-area" role="complementary">
@@ -578,8 +589,8 @@
     (function (i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;
         i[r] = i[r] || function () {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date();
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
         a = s.createElement(o),
             m = s.getElementsByTagName(o)[0];
         a.async = 1;

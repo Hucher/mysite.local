@@ -32,7 +32,9 @@ class NewsController extends Controller
     public function show(News $news)
     {
         $news::where('id', $news)->first();
-        return view('news.show', ['news' => $news]);
+        return view('news.show', [
+            'news' => $news
+        ]);
     }
 
     //Обновление данных
@@ -56,8 +58,10 @@ class NewsController extends Controller
     //Вывод новости подробнее
     public function more(News $news)
     {
+        $comments = $news->comments()->get();
         return view('news.more', [
-            'news' => $news
+            'news' => $news,
+            'comments' => $comments
         ]);
     }
 }

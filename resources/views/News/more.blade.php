@@ -38,11 +38,56 @@
         <div class="entry-summary">
             <p>{{$news->news}}</p>
         </div>
-        <div class="entry-summary">
-            <a href="{{route('news.show' ,$news)}}" class="button">Update</a>
-        </div>
-        <div class="entry-summary">
-            <a href="{{route('news.delete' , $news)}}" class="button">Delete</a>
+        <div class="container">
+            <div class="row">
+                <div class="entry-summary">
+                    <a href="{{route('news.show' ,$news)}}" class="button">Update</a>
+                </div>
+                <div class="entry-summary">
+                    <a href="{{route('news.delete' , $news)}}" class="button">Delete</a>
+                </div>
+            </div>
+            @forelse($comments as $comment)
+                <div class="card" style="width: 34rem">
+                    <div class="card-header" style="background: #43c6a9">
+                        Comment
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{$comment->title}}</h5>
+                        <p class="card-text">{{$comment->comment}}</p>
+                    </div>
+                </div>
+                <br>
+            @empty
+                <h1>No comments</h1>
+            @endforelse
         </div>
     </article>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    <form action="{{route('comment.store' , $news)}}" method="post">
+        {{csrf_field()}}
+        <div class="form-group">
+            <h1 class="text-light">Оставить комментарий</h1>
+        </div>
+        <div class="form-group input-group-lg">
+            <label for="title"><h4 class="text-light">Title</h4></label>
+            <input type="text" class="form-control" id="title" name="title" placeholder="title">
+        </div>
+        <div class="form-group input-group-lg">
+            <label for="comment"><h4 class="text-light">Comment</h4></label>
+            <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <input type="submit" name="button" value="Создать">
+        </div>
+        <br>
+    </form>
 @endsection
