@@ -21,11 +21,8 @@ Route::post('/news/{news}/update' , 'NewsController@update')->name('news.update'
 Route::get('/news/{news}/delete' , 'NewsController@delete')->name('news.delete');
 Route::get('/news/{news}/more' , 'NewsController@more')->name('news.more');
 
-//Route::get('/news/{news}/more' , 'CommentsController@index')->name('comments.index');
-//Route::get('/test' , 'CommentsController@index');
-
 Route::post('news/{news}/more' , 'CommentsController@store')->name('comment.store');
-
+Route::get('news/{news}/delete/{comment}' , 'CommentsController@delete')->name('comment.delete');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

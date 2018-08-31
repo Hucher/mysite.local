@@ -55,6 +55,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{$comment->title}}</h5>
                         <p class="card-text">{{$comment->comment}}</p>
+                        <a href="{{route('comment.delete' ,[ $news ,  $comment] )}}" class="btn btn-danger">Delete comment</a>
                     </div>
                 </div>
                 <br>
