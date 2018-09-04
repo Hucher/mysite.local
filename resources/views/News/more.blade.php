@@ -7,8 +7,7 @@
              class="post-19 post type-post status-publish format-standard has-post-thumbnail hentry category-typography tag-html-markup">
 
         <header class="clearfix entry-header">
-                <span class="comments-link"> <a
-                            href="#">0</a></span>
+                <span class="comments-link">Просмотров:{{$news->views}}</span>
 
             <h2 class="entry-title"><a href=""
                                        rel="bookmark">{{$news->title}}</a></h2>
@@ -41,10 +40,10 @@
         <div class="container">
             <div class="row">
                 <div class="entry-summary">
-                    <a href="{{route('news.show' ,$news)}}" class="button">Update</a>
+                    <a href="{{route('news.show' ,$news)}}" class="btn btn-primary">Update</a>
                 </div>
                 <div class="entry-summary">
-                    <a href="{{route('news.delete' , $news)}}" class="button">Delete</a>
+                    <a href="{{route('news.delete' , $news)}}" class="btn btn-danger">Delete</a>
                 </div>
             </div>
             @forelse($comments as $comment)
@@ -55,7 +54,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{$comment->title}}</h5>
                         <p class="card-text">{{$comment->comment}}</p>
-                        <a href="{{route('comment.delete' ,[ $news ,  $comment] )}}" class="btn btn-danger">Delete comment</a>
+                        <a href="{{route('comment.delete' ,[ $news ,  $comment] )}}" class="btn btn-danger">Delete</a>
                     </div>
                 </div>
                 <br>
@@ -80,11 +79,11 @@
         </div>
         <div class="form-group input-group-lg">
             <label for="title"><h4 class="text-light">Title</h4></label>
-            <input type="text" class="form-control" id="title" name="title" placeholder="title">
+            <input type="text" class="form-control" id="title" name="title" placeholder="title" required>
         </div>
         <div class="form-group input-group-lg">
             <label for="comment"><h4 class="text-light">Comment</h4></label>
-            <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
+            <textarea class="form-control" id="comment" name="comment" required rows="3"></textarea>
         </div>
         <div class="form-group">
             <input type="submit" name="button" value="Создать">

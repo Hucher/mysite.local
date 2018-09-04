@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\Event;
 use App\http\Models\News;
 use App\Http\Requests\StoreBlogPost;
 use Illuminate\Http\Request;
@@ -58,6 +59,7 @@ class NewsController extends Controller
     //Вывод новости подробнее
     public function more(News $news)
     {
+        event('Event', $news);
         $comments = $news->comments()->get();
         return view('news.more', [
             'news' => $news,

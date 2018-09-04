@@ -26,7 +26,8 @@ class EventServiceProvider extends ServiceProvider
     public function boot()
     {
         parent::boot();
-
-        //
+        Event::listen('Event', function ($news) {
+            $news->increment('views');
+        });
     }
 }

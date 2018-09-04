@@ -8,8 +8,7 @@
                  class="post-19 post type-post status-publish format-standard has-post-thumbnail hentry category-typography tag-html-markup">
 
             <header class="clearfix entry-header">
-                <span class="comments-link"> <a
-                            href="#">{{$news->id}}</a></span>
+                <span class="comments-link">Просмотров:{{$news->views}}</span>
 
                 <h2 class="entry-title"><a href="https://modernwpthemes.com/demo/aocean/text-formatting/"
                                            rel="bookmark">{{$news->title}}</a></h2>
@@ -38,13 +37,13 @@
             <div class="container">
                 <div class="row">
                     <div class="entry-summary">
-                        <a href="{{route('news.more' , $news)}}" class="button">More</a>
+                        <a href="{{route('news.more' , $news)}}" class="btn btn-info">More</a>
                     </div>
                     <div class="entry-summary">
-                        <a href="{{route('news.show' ,$news)}}" class="button">Update</a>
+                        <a href="{{route('news.show' ,$news)}}" class="btn btn-primary">Update</a>
                     </div>
                     <div class="entry-summary">
-                        <a href="{{route('news.delete' , $news)}}" class="button">Delete</a>
+                        <a href="{{route('news.delete' , $news)}}" class="btn btn-danger">Delete</a>
                     </div>
                 </div>
             </div>
@@ -79,15 +78,15 @@
         </div>
         <div class="form-group input-group-lg">
             <label for="title"><h4 class="text-light">Title</h4></label>
-            <input type="text" class="form-control" id="title" name="title" placeholder="title">
+            <input type="text" class="form-control" id="title" name="title" placeholder="title" required>
         </div>
         <div class="form-group input-group-lg">
             <label for="img"><h4 class="text-light">Img</h4></label>
-            <input type="text" class="form-control" id="img" name="img" placeholder="img">
+            <input type="text" class="form-control" id="img" name="img" placeholder="img" required>
         </div>
         <div class="form-grou input-group-lg">
             <label for="news"><h4 class="text-light">News</h4></label>
-            <textarea class="form-control" id="news" name="news" rows="3"></textarea>
+            <textarea class="form-control" id="news" name="news"required rows="3"></textarea>
         </div>
         <div class="form-group">
             <input type="submit" name="button" value="Создать">
